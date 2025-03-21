@@ -43,6 +43,7 @@ var soma_1 = __importDefault(require("./soma"));
 var subtracao_1 = __importDefault(require("./subtracao"));
 var potenciacao_1 = __importDefault(require("./potenciacao"));
 var radiciacao_1 = __importDefault(require("./radiciacao"));
+var bhaskara_1 = __importDefault(require("./bhaskara"));
 var iniciar = function () {
     var leitor = readline.createInterface({
         input: process.stdin,
@@ -54,7 +55,7 @@ var iniciar = function () {
         var numero2 = Number(instrucoes[1]);
         var operacao = instrucoes[2];
         if (instrucoes.length == 1) {
-            operacao = instrucoes[2];
+            operacao = instrucoes[0];
         }
         console.log("Estas foram suas instru\u00E7\u00F5es: ".concat(instrucoes, "\n"));
         switch (operacao) {
@@ -82,7 +83,18 @@ var iniciar = function () {
                 calculo = new radiciacao_1.default();
                 console.log("Radicia\u00E7\u00E3o: ".concat(calculo.calcular(numero1, numero2)));
                 break;
+            case 'Bhaskara':
+                if (instrucoes.length < 4) {
+                    console.log("Precisa de 3 números");
+                    break;
+                }
+                var numero3 = Number(instrucoes[2]);
+                calculo = new bhaskara_1.default();
+                console.log("Bhaskara: ".concat(calculo.calcular3(numero1, numero2, numero3)));
+                break;
             case 'Sair':
+                console.log("Saindo");
+                break;
         }
     }));
 };

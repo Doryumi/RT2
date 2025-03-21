@@ -21,34 +21,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var calculo_1 = __importDefault(require("./calculo"));
 var Bhaskara = /** @class */ (function (_super) {
     __extends(Bhaskara, _super);
-    function Bhaskara(num1, num2, num3) {
-        var _this = _super.call(this) || this;
-        _this.num1 = num1;
-        _this.num2 = num2;
-        _this.num3 = num3;
-        return _this;
+    function Bhaskara() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     Bhaskara.prototype.calcular = function (num1, num2) {
         return 0;
     };
     Bhaskara.prototype.calcular3 = function (num1, num2, num3) {
-        if (num3 == undefined) {
-            num3 = 0;
+        var delta = (Math.pow(num2, 2)) - (4 * num1 * num3);
+        if (delta < 0) {
+            console.log("C\u00E1lculo complexo (delta negativo)");
         }
-        return ((Math.pow(num2, 2)) - 4 * num1 * num3);
-    };
-    Bhaskara.prototype.bhaskara = function () {
-        if (this.calcular3(this.num1, this.num2, this.num3) < 0) {
-            console.log("C\u00E1lculo complexo");
-        }
-        else if (this.calcular3(this.num1, this.num2, this.num3) === 0) {
-            return (-this.num2) / 2 * this.num1;
+        else if (delta === 0) {
+            return (-num2) / 2 * num1;
         }
         else {
             var raiz1 = void 0;
             var raiz2 = void 0;
-            raiz1 = (-this.num2) + Math.pow(this.calcular3(this.num1, this.num2, this.num3), 1 / 2) / 2 * this.num1;
-            raiz2 = (-this.num2) - Math.pow(this.calcular3(this.num1, this.num2, this.num3), 1 / 2) / 2 * this.num1;
+            raiz1 = (-num2 + Math.sqrt(delta)) / (2 * num1);
+            raiz2 = (-num2 - Math.sqrt(delta)) / (2 * num1);
             return ("Raiz positiva: ".concat(raiz1, "\nRaiz negativa: ").concat(raiz2));
         }
     };

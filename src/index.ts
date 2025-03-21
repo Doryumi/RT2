@@ -19,8 +19,8 @@ let iniciar = () => {
         let numero1 = Number(instrucoes[0])
         let numero2 = Number(instrucoes[1])
         let operacao = instrucoes[2]
-        if(instrucoes.length == 1){
-            operacao = instrucoes[2]
+        if(instrucoes.length === 1){
+            operacao = instrucoes[0]
         }
         console.log(`Estas foram suas instruções: ${instrucoes}\n`)
     
@@ -49,7 +49,19 @@ let iniciar = () => {
                 calculo = new Radiciacao()
                 console.log(`Radiciação: ${calculo.calcular(numero1, numero2)}`)
                 break
-            case 'Sair': 
+            case 'Bhaskara':
+                if (instrucoes.length < 4){
+                    console.log("Precisa de 3 números")
+                    break
+                }
+                let numero3 = Number(instrucoes[2])
+                calculo = new Bhaskara()
+                console.log(`Bhaskara: ${calculo.calcular3(numero1, numero2, numero3)}`)
+                break
+            case 'Sair':
+                console.log(`Saindo`)
+            break
+             
         }
     }))
 }
